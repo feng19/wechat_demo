@@ -1,8 +1,7 @@
 defmodule WeChatDemo.WeChatEvent do
   require Logger
   import WeChat.Utils, only: [now_unix: 0]
-  alias WeChat.{Utils, CustomMessage}
-  alias WeChat.ServerMessage.XmlMessage
+  alias WeChat.{CustomMessage, ServerMessage.XmlMessage}
 
   # 处理 公众号 & 小程序 推送消息
   def handle_event(_conn, client, message) do

@@ -1,5 +1,7 @@
 # WeChatDemo
 
+[WeChat SDK 使用指南](https://feng19.com/2022/07/08/wechat_for_elixir_usage/) 配套代码
+
 ## 建立 project
 
 ```shell
@@ -15,15 +17,15 @@ mix phx.new wechat_demo --no-ecto --no-gettext --no-dashboard --no-mailer
     [
       ...,
       {:saxy, "~> 1.4"},
-      {:wechat, "~> 0.9", hex: :wechat_sdk}
+      {:wechat, "~> 0.10", hex: :wechat_sdk}
     ]
   end
   ```
 
 2. 增加 clients
-  - [`Client.Normal`](lib/wechat_demo/client/normal.ex)
-  - [`Client.Mini`](lib/wechat_demo/client/mini.ex)
-  - [`Client.Work`](lib/wechat_demo/client/work.ex)
+  - 公众号 [`Client.Normal`](lib/wechat_demo/client/normal.ex)
+  - 小程序 [`Client.Mini`](lib/wechat_demo/client/mini.ex)
+  - 企业微信 [`Client.Work`](lib/wechat_demo/client/work.ex)
 
 3. 增加文件 [`WeChatDemo.WeChatEvent`](lib/wechat_demo/wechat_event.ex)
 4. 修改 [`router.ex`](lib/wechat_demo_web/router.ex)，增加下面代码
@@ -84,7 +86,7 @@ mix phx.new wechat_demo --no-ecto --no-gettext --no-dashboard --no-mailer
   end
   ```
 
-6. 修改 [`config.exs`](config/config.exs)，增加下面配置
+5. 修改 [`config.exs`](config/config.exs)，增加下面配置
 
   ```elixir
   host = "https://wx.example.com"
@@ -118,7 +120,7 @@ mix phx.new wechat_demo --no-ecto --no-gettext --no-dashboard --no-mailer
     password: "000999"
   ```
 
-7. 修改 [`prod.exs`](config/prod.exs), 增加下面配置
+6. 修改 [`prod.exs`](config/prod.exs), 增加下面配置
 
   ```elixir
   config :wechat,
