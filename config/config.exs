@@ -34,16 +34,16 @@ config :phoenix, :json_library, Jason
 # for WeChat
 
 host = "https://wx.example.com"
-oauth2_callbacks = %{"dev" => "http://127.0.0.1:4000"}
+oauth2_env_callbacks = %{"dev" => "http://127.0.0.1:4000"}
 
 client_settings = [
   hub_springboard_url: "#{host}/wx/:app/:env/cb/",
-  oauth2_callbacks: oauth2_callbacks
+  oauth2_callbacks: oauth2_env_callbacks
 ]
 
 work_client_settings = [
   hub_springboard_url: "#{host}/wxw/:app/:agent/:env/cb/",
-  oauth2_callbacks: oauth2_callbacks
+  oauth2_callbacks: oauth2_env_callbacks
 ]
 
 config :wechat,
@@ -52,11 +52,11 @@ config :wechat,
     WeChatDemo.Client.Mini,
     WeChatDemo.Client.Work
   ],
-  clients: [
-    {WeChatDemo.Client.Normal, client_settings},
-    {WeChatDemo.Client.Mini, client_settings},
-    {WeChatDemo.Client.Work, all: work_client_settings}
-  ]
+  clients: %{
+    WeChatDemo.Client.Normal => client_settings,
+    WeChatDemo.Client.Mini => client_settings,
+    WeChatDemo.Client.Work => [all: work_client_settings]
+  }
 
 config :wechat, WeChat.Storage.HttpForHubClient,
   hub_base_url: "#{host}/hub/expose",
