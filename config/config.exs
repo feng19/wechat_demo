@@ -47,6 +47,7 @@ work_client_settings = [
 ]
 
 config :wechat,
+  check_token_for_clients: [WeChatDemo.Client.Normal, WeChatDemo.Client.Mini],
   refresh_settings: [
     WeChatDemo.Client.Normal,
     WeChatDemo.Client.Mini,

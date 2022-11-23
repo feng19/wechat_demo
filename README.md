@@ -17,7 +17,7 @@ mix phx.new wechat_demo --no-ecto --no-gettext --no-dashboard --no-mailer
     [
       ...,
       {:saxy, "~> 1.4"},
-      {:wechat, "~> 0.10", hex: :wechat_sdk}
+      {:wechat, "~> 0.11", hex: :wechat_sdk}
     ]
   end
   ```

@@ -45,7 +45,7 @@ defmodule WeChatDemo.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:saxy, "~> 1.4"},
       {:mime, "~> 2.0", override: true},
-      {:wechat, "~> 0.10", hex: :wechat_sdk}
+      {:wechat, "~> 0.11", hex: :wechat_sdk}
     ]
   end
 
