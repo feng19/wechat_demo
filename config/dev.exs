@@ -63,6 +63,10 @@ config :phoenix, :stacktrace_depth, 20
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
 
-config :wechat,
-  server_role: :hub_client,
-  storage: WeChat.Storage.HttpForHubClient
+alias WeChatDemo.Client.{Normal, Mini, Work}
+server_role = :hub_client
+storage = WeChat.Storage.HttpForHubClient
+
+config :wechat, Normal, server_role: server_role, storage: storage
+config :wechat, Mini, server_role: server_role, storage: storage
+config :wechat, Work, server_role: server_role, storage: storage

@@ -46,17 +46,15 @@ work_client_settings = [
   oauth2_callbacks: oauth2_env_callbacks
 ]
 
+alias WeChatDemo.Client.{Normal, Mini, Work}
+
 config :wechat,
-  check_token_for_clients: [WeChatDemo.Client.Normal, WeChatDemo.Client.Mini],
-  refresh_settings: [
-    WeChatDemo.Client.Normal,
-    WeChatDemo.Client.Mini,
-    WeChatDemo.Client.Work
-  ],
+  check_token_for_clients: [Normal, Mini],
+  refresh_settings: [Normal, Mini, Work],
   clients: %{
-    WeChatDemo.Client.Normal => client_settings,
-    WeChatDemo.Client.Mini => client_settings,
-    WeChatDemo.Client.Work => [all: work_client_settings]
+    Normal => client_settings,
+    Mini => client_settings,
+    Work => [all: work_client_settings]
   }
 
 config :wechat, WeChat.Storage.HttpForHubClient,

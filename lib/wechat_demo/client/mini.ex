@@ -6,6 +6,6 @@ defmodule WeChatDemo.Client.Mini do
     appsecret: "your-app-secret",
     token: "your-token",
     encoding_aes_key: "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFG",
-    server_role: Application.get_env(:wechat, :server_role, :hub_client),
-    storage: Application.get_env(:wechat, :storage, WeChat.Storage.HttpForHubClient)
+    server_role: :runtime_env,
+    storage: :runtime_env
 end

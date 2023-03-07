@@ -1,7 +1,7 @@
 defmodule WeChatDemo.WeChatEvent do
   require Logger
   import WeChat.Utils, only: [now_unix: 0]
-  alias WeChat.{CustomMessage, ServerMessage.XmlMessage}
+  alias WeChat.{CustomMessage, ServerMessage.ReplyMessage}
 
   # 处理 公众号 & 小程序 推送消息
   def handle_event(_conn, client, message) do
@@ -29,7 +29,7 @@ defmodule WeChatDemo.WeChatEvent do
               "Hello!"
           end
 
-        reply_msg = XmlMessage.reply_text(openid, message["ToUserName"], timestamp, reply_text)
+        reply_msg = ReplyMessage.reply_text(openid, message["ToUserName"], timestamp, reply_text)
 
         {:reply, reply_msg, timestamp}
 
@@ -38,7 +38,7 @@ defmodule WeChatDemo.WeChatEvent do
         timestamp = now_unix()
 
         reply_msg =
-          XmlMessage.reply_text(
+          ReplyMessage.reply_text(
             message["FromUserName"],
             message["ToUserName"],
             timestamp,
